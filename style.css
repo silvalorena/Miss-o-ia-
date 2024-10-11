@@ -1,81 +1,120 @@
-// Seleciona os elementos HTML que manipulados
-const caixaPrincipal = document.querySelector(".caixa-principal");
-const caixaPerguntas = document.querySelector(".caixa-perguntas");
-const caixaAlternativas = document.querySelector(".caixa-alternativas");
-const caixaResultado = document.querySelector(".caixa-resultado");
-const textoResultado = document.querySelector(".texto-resultado");
-
-//Arry de objeto contendo as perguntas e alternativas
-const perguntas = [
-    {
-        enunciado: "Qual a idade máxima que um cachorro pode chegar?",
-        alternativas: [
-            "15 anos",
-            "20 anos"
-        ],
-        correta: 0 // A primeira alternativa é a correta
-    },
-    {
-        enunciado: "Quantos dias há em um ano bissexto?",
-        alternativas: [
-            "365",
-            "366"
-        ],
-        correta: 1 // A segunda alternativa é a correta
-    },
-    {
-        enunciado: "Qual é o maior planeta do nosso sistema solar?",
-        alternativas: [
-            "Terra",
-            "Júpiter"
-        ],
-        correta: 1
-    },
-    {
-        enunciado: "Qual é a capital da França?",
-        alternativas: [
-            "Paris",
-            "Londres"
-        ],
-        correta: 0
-    },
-    {
-        enunciado: "Qual é a fórmula química da água?",
-        alternativas: [
-            "H2O",
-            "CO2"
-        ],
-        correta: 0
-    }
-];
-
-let atual = 0
-let pergutaAtual;
-let pontuacao = 0;
-
-//FUNÇÃO MOSTRAR PERGUNTAS
-function mostrarPergunta() {
-    perguntaAtual = perguntas[atual];
-    caixaPerguntas.textContent = perguntaAtual.enunciado;
-    caixaAlternativas.innerHTML = "";
-
-    pergutaAtual.alternativas.forEach((alternativas, index) => {
-        const botao = document.createElement("button");
-        botao.addEventListener("click", () => verificaResposta(index));
-        caixaAlternativas.appendChild(botao);
-    });
+/* Definição de variáveis CSS para as cores usadas no design */
+:root {
+    /* cor do fundo */
+    --cor-fundo: #ffffff;
+        /* cores da caixa principal */
+    --cor-principal: #0B0D20;
+    /* cores da caixa secundaria */
+    --cor-secundaria: #212333;
+        /* cor texto quest/Buttom */
+    --cor-destaque: #ffd700;
+        /* cor do texto pergunta */
+    --cor-texto: #fafafa;
+        /* cor fadebuttom */
+    --cor-fadeButtom: #e30d6d;
 }
 
-// FUNÇÃO VERIFICAR RESPOSTA
-function vereficaResposta(Seleciona) {
-    if (selecionda === pergutaAtual.correta) {
-        pontuacao++;
-    }
-    atual++;
+/* Configuração do estilo do corpo da página */
+body {
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--cor-fundo);
+        color: var(--cor-texto);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+}
 
-    if (atual < perguntas.length) {
-        mostrarPergunta();
-    } else {
-        mostarResultado();
+/* Adiciona uma camada de imagem de fundo com blur */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Caminho da imagem */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(2px);
+    z-index: -1;
+}
+
+/* Estilo da caixa principal */
+.caixa-principal {
+    background-color: var(--cor-principal);
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+/* Estilo para o cabeçalho principal */
+h1 {
+    color: var(--cor-destaque);
+}
+
+/* Estilo para os botões */
+button {
+    background-color: var(--cor-destaque);
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    color: var(--cor-principal);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    border-radius: 10px;
+}
+
+button:hover {
+    background-color: var(--cor-fadeButtom);
+    color: var(--cor-texto);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
+   
+    button:focus {
+        outline: 2px dashed var(--cor-destaque);
+}
+
+/* Estilo para a caixa de resultado */
+.caixa-resultado {
+    display: none;
+    text-align: center;
+    padding: 20px;
+    background-color: var(--cor-secundaria);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    border-radius: 8px;
+}
+
+.caixa-resultado.mostrar {
+    opacity: 1;
+}
+
+/* Estilo para o texto do resultado */
+.texto-resultado {
+    font-size: 1.2rem;
+    color: var(--cor-texto);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+#video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
 }

@@ -8,42 +8,42 @@ const textoResultado = document.querySelector(".texto-resultado");
 // Array de objeto contendo as perguntas e alternativas
 const perguntas = [
     {
-        enunciado: "Qual a idade máxima que um cachorro pode chegar?",
+        enunciado: " quem foi a primeira pessoa a ir para o espaço?",
         alternativas: [
-            "15 anos",
-            "20 anos"
+            "yuri gagarin",
+            "buzz aldrin"
         ],
-        correta: 0 // A primeira alternativa é a correta
+        correta: 0// A primeira alternativa é a correta
     },
     {
-        enunciado: "Quantos dias há em um ano bissexto?",
+        enunciado: "qual mostanha mais alta do mundo?",
         alternativas: [
-            "365",
-            "366"
+            "pico da neblina",
+            "monte everest "
         ],
         correta: 1 // A segunda alternativa é a correta
     },
     {
-        enunciado: "Qual é o maior planeta do nosso sistema solar?",
+        enunciado: "Que cidade brasileira é conhecida por chover todos os dias quase à mesma hora?",
         alternativas: [
-            "Terra",
-            "Júpiter"
+            "sergipe",
+            "belem"
         ],
         correta: 1
     },
     {
-        enunciado: "Qual é a capital da França?",
+        enunciado: "qual pais tem um formato de uma bota?",
         alternativas: [
-            "Paris",
+            "italia",
             "Londres"
         ],
         correta: 0
     },
     {
-        enunciado: "Qual é a fórmula química da água?",
+        enunciado: "a que temperatura a agua ferve ?",
         alternativas: [
-            "H2O",
-            "CO2"
+            "100 graus c",
+            "200 graus c"
         ],
         correta: 0
     }
